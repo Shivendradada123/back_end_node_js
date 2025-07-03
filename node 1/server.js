@@ -20,20 +20,16 @@
 //   console.log(`Server running at http://localhost:${PORT}`);
 // });
 
-
-
 // const http = require('http');
 
 // const server = http.createServer((req, res) => {
 
 //   res.setHeader('Content-Type', 'text/html');
 
-
 //   res.write('<html>');
 //   res.write('<head><title>backend</title></head>');
 //   res.write("<body><h1 style='color:red'>hey I am Shivendra</h1></body>");
 //   res.write('</html>');
-
 
 //   res.end();
 // });
@@ -42,7 +38,6 @@
 // server.listen(PORT, () => {
 //   console.log(`Server running at http://localhost:${PORT}`);
 // });
-
 
 const http = require("http");
 
@@ -56,26 +51,23 @@ http
         <style>
           body {
             background: #282c34;
-            color: #fff;
-            font-family: sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
+          
           }
           h1 { color: #61dafb; }
         </style>
       </head>
       <body>
-        <h1>Hello from Node.js 👋</h1>
-        <p>🚀 Built by Shivendra using raw HTTP module</p>
+        <h1> 👋 hey i am Shivendra</h1>
+        <p> hey i am mauhariya</p>
       </body>
     </html>
   `);
     res.end();
   })
   .listen(3000, () => {
-    console.log("✅ Server running at http://localhost:3000");
+    console.log("yes working fine");
   });
-
