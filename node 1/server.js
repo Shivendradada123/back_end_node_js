@@ -56,54 +56,61 @@
 
 // //
 
-// const http = require("http");
+const http = require("http");
+const fs = require('fs')
 
-// const server = http.createServer((req, res) => {
-//   console.log(req);
-//   if (req.url === "/") {
-//     res.setHeader("Content-Type", "text/html");
+const server = http.createServer((req, res) => {
+  console.log(req.url, req.method, );
 
-//     res.write("<h1>Welcome to Home page</h1>");
+  if (req.url === "/") {
+    res.setHeader("Content-Type", "text/html");
 
-//     res.write('<form action="/" method="POST">');
+    res.write("<h1>Welcome to Home page</h1>");
 
-//     // Name input
-//     res.write(
-//       '<input type="text" id="name" name="name" placeholder="Enter your name"><br><br>'
-//     );
+    res.write('<form action="/" method="POST">');
 
-//     // Gender radio buttons
-//     res.write('<label for="gender">Gender:</label>');
+    // Name input
+    res.write(
+      '<input type="text" id="name" name="name" placeholder="Enter your name"><br><br>'
+    );
 
-//     res.write('<input type="radio" id="male" name="gender" value="male">');
-//     res.write('<label for="male">Male</label>');
+    // Gender radio buttons
+    res.write('<label for="gender">Gender:</label>');
 
-//     res.write('<input type="radio" id="female" name="gender" value="female">');
-//     res.write('<label for="female">Female</label><br><br>');
+    res.write('<input type="radio" id="male" name="gender" value="male">');
+    res.write('<label for="male">Male</label>');
 
-//     // Submit button
-//     res.write('<button type="submit">Submit</button>');
+    res.write('<input type="radio" id="female" name="gender" value="female">');
+    res.write('<label for="female">Female</label><br><br>');
 
-//     res.write("</form>");
+    // Submit button
+    res.write('<button type="submit">Submit</button>');
 
-//     return res.end();
-//   }
+    res.write("</form>");
 
-//   // Optional: Handle forsubmi6tm submission (just display a message for now)
-//   else if ( req.method === "POST" && req.url.toLowerCase() === '/submit-details') {
+    return res.end();
+  }
+
+  // Optional: Handle forsubmi6tm submission (just display a message for now)
+  else if ( req.url.toLowerCase() === "/submit-details" && req.method == "POST") {
+    req.on('data', (chunk) => {
+        console.log(chunk);
+    })
     
-//     fs.writeFileSync("user.txt", "Shivendra mauhariya");
-//     res.statusCode = 303;
-//     res.setHeader("Location", "/");
+    fs.writeFileSync("user.txt", "Shivendra mauhariya");
     
+    res.setHeader("Location", "/");
+    res.statusCode = 302;
 
-//     return res.end();
-//   }
-// });
+    return res.end();
+  }
+});
 
-// server.listen(5500, () => {
-//   console.log("Server running at http://localhost:5500");
-// });
+server.listen(5500, () => {
+  console.log("Server running at http://localhost:5500");
+});
  
+
+
 
  
