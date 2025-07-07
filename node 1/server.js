@@ -57,17 +57,20 @@
 // //
 
 const http = require("http");
-const fs = require('fs')
+const fs = require("fs");
+const { json } = require("stream/consumers");
+// ❌ const { buffer } = require("stream/consumers"); — removed (galat import)
 
 const server = http.createServer((req, res) => {
-  console.log(req.url, req.method, );
+  console.log(req.url, req.method);
 
   if (req.url === "/") {
     res.setHeader("Content-Type", "text/html");
 
     res.write("<h1>Welcome to Home page</h1>");
 
-    res.write('<form action="/" method="POST">');
+    // ✅ Fixed form action URL
+    res.write('<form action="/submit-details" method="POST">');
 
     // Name input
     res.write(
@@ -91,26 +94,40 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  // Optional: Handle forsubmi6tm submission (just display a message for now)
-  else if ( req.url.toLowerCase() === "/submit-details" && req.method == "POST") {
-    req.on('data', (chunk) => {
-        console.log(chunk);
-    })
-    
-    fs.writeFileSync("user.txt", "Shivendra mauhariya");
-    
-    res.setHeader("Location", "/");
-    res.statusCode = 302;
+  // ✅ Correct route and method
+  else if (
+    req.url.toLowerCase() === "/submit-details" &&
+    req.method == "POST"
+  ) {
+    const body = [];
+    req.on("data", (chunk) => {
+      console.log(chunk);
+      body.push(chunk);
+    });
 
-    return res.end();
-  }
+    req.on("end", () => {
+   
+      const parsebody = Buffer.concat(body).toString();
+      console.log(parsebody);
+      const parm = new URLSearchParams(parsebody);
+      // const bodyob = Object.fromEntries
+      // console.log(bodyob);
+ const jsonobject = {};
+ for (const [key, value] of parm.entries()) {
+  jsonobject[key] = value
+ }
+
+      fs.writeFileSync("user.txt", JSON.stringify(parsebody));
+
+      res.setHeader("Location", "/");
+      res.statusCode = 302;
+      return res.end();
+
+     
+    });
+  } 
 });
-
+  
 server.listen(5500, () => {
   console.log("Server running at http://localhost:5500");
 });
- 
-
-
-
- 
