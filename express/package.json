@@ -8,7 +8,7 @@
   "main": "aura.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon module.js"
+    "start": "nodemon temex.js"
   },
   "dependencies": {
     "express": "^5.1.0",
