@@ -9,7 +9,7 @@ const handeler = ((req, res) => {
   if (req.url === "/") {
     res.setHeader("Content-Type", "text/html");
 
-    res.write("<h1>Welcome to Home </h1>");
+    res.write("<h1>Welcome to mauhariya </h1>");
 
     res.write('<form action="/submit-details" method="POST">');
 
