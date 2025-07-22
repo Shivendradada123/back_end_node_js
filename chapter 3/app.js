@@ -15,7 +15,7 @@ const handeler = ((req, res) => {
 
     
     res.write(
-      '<input type="text" id="name" name="name" placeholder="Enter your name"><br><br>'
+      '<input type="text" id="name" name="name daalo" placeholder="Enter your name"><br><br>'
     );
 
     
