@@ -19,7 +19,7 @@ const handeler = ((req, res) => {
     );
 
     
-    res.write('<label for="gender">Gender:</label>');
+    res.write('<label for="gender">Gender--</label>');
 
     res.write('<input type="radio" id="male" name="gender" value="male">');
     res.write('<label for="male">Male</label>');
