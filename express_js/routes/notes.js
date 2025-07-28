@@ -52,7 +52,7 @@ router.delete("/:id", (req, res) => {
 
   const filteredNotes = notes.filter((n) => n.id != id);
   fs.writeFileSync(dataPath, JSON.stringify(filteredNotes, null, 2));
-  res.json({ message: "Note deleted" });
+  res.json({ message: "Note delet" });
 });
 
 module.exports = router;
