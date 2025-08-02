@@ -10,8 +10,8 @@ app.use((req, res, next) => {
 
 
 app.use((req, res, next) => {
-  console.log("Code successfully run:", req.url, req.method);
-  res.send("<p>Hey I am Shivendra  this is Express code...</p>");
+  console.log("Code successfully run yes:", req.url, req.method);
+  res.send("<p>Hey I am Shivendra  this is Express code......</p>");
 });
 
 
