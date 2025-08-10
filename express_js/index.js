@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
   console.log("Code successfully run yes:", req.url, req.method);
-  res.send("<p> me ek pro codder hu jisko nhi lagta uski mkc </p>");
+  res.send("<p> me ek pro codder hu jisko nhi lagta </p>");
 });
 
 
